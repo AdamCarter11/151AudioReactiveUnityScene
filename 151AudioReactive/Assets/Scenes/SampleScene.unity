@@ -314,12 +314,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412904429}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44b926312a727f94094a197bd8bffd89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1757755969}
 --- !u!61 &412904433
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -694,6 +693,7 @@ GameObject:
   - component: {fileID: 1757755968}
   - component: {fileID: 1757755970}
   - component: {fileID: 1757755969}
+  - component: {fileID: 1757755971}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -762,6 +762,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757755967}
   m_CullTransparentMesh: 1
+--- !u!114 &1757755971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757755967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44b926312a727f94094a197bd8bffd89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1761295095
 GameObject:
   m_ObjectHideFlags: 0

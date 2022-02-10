@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class clickEvents : MonoBehaviour
 {
-    private int score = 0;
-    [SerializeField] private Text scoreText;
+    public static int score = 0;
+    public static Text scoreText;
+    private bool canPlayerHit = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        scoreText = GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -19,11 +20,13 @@ public class clickEvents : MonoBehaviour
         
     }
     private void OnTriggerStay2D(Collider2D other) {
+        /*
         if(other.gameObject.CompareTag("SpawnedObject") && Input.GetKeyDown(KeyCode.Space)){
             print("HIT");
             score++;
             scoreText.text = "Score: " + score;
             Destroy(other.gameObject);
         }
+        */
     }
 }

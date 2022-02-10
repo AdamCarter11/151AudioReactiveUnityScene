@@ -8,7 +8,7 @@ public class spawnedObject : MonoBehaviour
     private float speed = .01f;
     private float startTime;
     private float tripLength;
-
+    private bool canPlayerHit = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +27,26 @@ public class spawnedObject : MonoBehaviour
         float partOfTrip = distCov / tripLength;
 
         transform.position = Vector3.Lerp(transform.position, objectToMoveTo.transform.position, partOfTrip);
-    }
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.CompareTag("target")){
+
+        if(canPlayerHit && Input.GetKeyDown(KeyCode.Space)){
+            print("HIT");
+            clickEvents.score++;
+            clickEvents.scoreText.text = "Score: " + clickEvents.score;
             Destroy(gameObject);
         }
     }
-    
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("target")){
+            clickEvents.score--;
+            Destroy(gameObject);
+        }
+        if(other.gameObject.CompareTag("area")){
+           canPlayerHit = true; 
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.gameObject.CompareTag("area")){
+            canPlayerHit = false;
+        }
+    }
 }
