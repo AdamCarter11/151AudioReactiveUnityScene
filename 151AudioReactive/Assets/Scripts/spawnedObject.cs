@@ -5,6 +5,7 @@ using UnityEngine;
 public class spawnedObject : MonoBehaviour
 {
     private GameObject objectToMoveTo;
+    private GameManagerScript GM;
     private float speed = .01f;
     private float startTime;
     private float tripLength;
@@ -12,6 +13,9 @@ public class spawnedObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // acquiring GameplayManager
+        GM = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+
         objectToMoveTo = GameObject.FindGameObjectWithTag("target");
         if(objectToMoveTo == null){
             Destroy(gameObject);
@@ -30,14 +34,22 @@ public class spawnedObject : MonoBehaviour
 
         if(canPlayerHit && Input.GetKeyDown(KeyCode.Space)){
             print("HIT");
-            clickEvents.score++;
-            clickEvents.scoreText.text = "Score: " + clickEvents.score;
+            GM.incrementScore(1 * GM.multiplier);
+            GM.incrementMultiplier(1);
+            GM.hit = true;
             Destroy(gameObject);
+        } 
+
+        // this should probably be integrated into the other if statement, but it'd be confusing and I'm lazy
+        if (Input.GetKeyDown(KeyCode.Space) && !canPlayerHit)
+        {
+            GM.attemptedHit = true;
         }
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("target")){
-            clickEvents.score--;
+            GM.incrementScore(-1);
+            GM.resetMultiplier();
             Destroy(gameObject);
         }
         if(other.gameObject.CompareTag("area")){
