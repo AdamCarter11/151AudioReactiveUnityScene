@@ -701,7 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerAmount: 5
   timeForStep: 0.15
-  beatTime: 0.05
+  beatTime: 0.1
   smoothTime: 2
   objectToSpawn: {fileID: 5404751777182276818, guid: 616cee096c551044d867ab8a8d37b91a, type: 3}
 --- !u!4 &1744263232
